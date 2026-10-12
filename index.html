@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lettore M3U</title>
+  <meta name="description" content="Lettore di playlist M3U per telefono e Fire TV Stick">
+  <meta name="theme-color" content="#11161b">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="lamp" aria-hidden="true"></span>
+      <span>Lettore M3U</span>
+    </div>
+    <button id="btn-playlist" class="btn" type="button" aria-expanded="false" aria-controls="panel">Playlist</button>
+  </header>
+
+  <section id="panel" class="panel" hidden aria-label="Carica una playlist">
+    <div class="panel-grid">
+      <form id="form-url" class="load-block">
+        <h2>Da un link</h2>
+        <label for="in-url">Indirizzo della playlist (.m3u o .m3u8)</label>
+        <input id="in-url" type="url" inputmode="url" placeholder="https://…/lista.m3u" autocomplete="off" required>
+        <button class="btn btn-primary" type="submit">Carica dal link</button>
+      </form>
+
+      <div class="load-block">
+        <h2>Da un file</h2>
+        <label for="in-file">Scegli un file dal dispositivo</label>
+        <input id="in-file" type="file">
+      </div>
+
+      <form id="form-text" class="load-block">
+        <h2>Incolla il testo</h2>
+        <label for="in-text">Contenuto della playlist</label>
+        <textarea id="in-text" rows="5" spellcheck="false" placeholder="#EXTM3U&#10;#EXTINF:-1 group-title=&quot;Gruppo&quot;,Nome canale&#10;https://…/flusso.m3u8"></textarea>
+        <button class="btn btn-primary" type="submit">Carica il testo</button>
+      </form>
+    </div>
+    <div class="panel-foot">
+      <p id="panel-msg" class="msg" role="status"></p>
+      <button id="btn-clear" class="btn btn-quiet" type="button">Rimuovi la playlist</button>
+    </div>
+  </section>
+
+  <main class="layout">
+    <section class="stage" aria-label="Lettore">
+      <div class="screen">
+        <video id="video" controls playsinline preload="none"></video>
+        <div id="overlay" class="overlay" role="status"></div>
+      </div>
+      <div class="now">
+        <span class="now-label">In onda</span>
+        <span id="now-name" class="now-name">Nessun canale</span>
+        <span id="now-group" class="now-group"></span>
+      </div>
+    </section>
+
+    <aside class="channels" aria-label="Canali">
+      <div class="filters">
+        <label class="sr" for="in-search">Cerca un canale</label>
+        <input id="in-search" type="search" placeholder="Cerca un canale" autocomplete="off">
+        <label class="sr" for="in-group">Gruppo</label>
+        <select id="in-group"><option value="">Tutti i gruppi</option></select>
+      </div>
+      <p id="count" class="count"></p>
+      <ul id="list" class="list"></ul>
+    </aside>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+  <script src="m3u.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "Lettore M3U",
+  "short_name": "Lettore M3U",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#11161b",
+  "theme_color": "#11161b",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

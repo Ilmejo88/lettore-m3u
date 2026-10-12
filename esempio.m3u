@@ -1,0 +1,7 @@
+#EXTM3U
+# Modello di playlist. Sostituisci gli indirizzi di esempio con flussi che hai il diritto di guardare.
+# Ogni canale occupa due righe: #EXTINF con nome e gruppo, poi l'indirizzo del flusso.
+#EXTINF:-1 tvg-logo="https://example.com/logo1.png" group-title="Notizie",Nome del canale 1
+https://example.com/canale1/index.m3u8
+#EXTINF:-1 tvg-logo="https://example.com/logo2.png" group-title="Intrattenimento",Nome del canale 2
+https://example.com/canale2/index.m3u8
